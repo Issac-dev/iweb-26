@@ -270,7 +270,7 @@ function Page() {
           {CITIES.map((p) => (
             <li key={p.n} className="group relative overflow-hidden border-b reveal" style={{ borderColor: "#ffffff14" }}>
               <a href="#tickets" className="relative flex items-center px-6 md:px-10 transition-all duration-500" style={{ height: 220 }}>
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: "linear-gradient(90deg, rgba(193,18,31,0.85) 0%, rgba(10,10,10,[...]
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: "linear-gradient(90deg, rgba(193,18,31,0.85) 0%, rgba(10,10,10,0.2) 100%)" }} />
                 <div className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 font-display select-none" style={{ fontSize: "clamp(120px, 22vw, 320px)", color: "#ffffff08", lineHeight: 1 }}>
                   {p.n}
                 </div>
@@ -281,7 +281,7 @@ function Page() {
                       {p.name.toUpperCase()}
                     </div>
                   </div>
-                  <div className="hidden md:flex items-center gap-4 font-condensed uppercase tracking-[0.3em] text-xs translate-x-[-20px] opacity-0 group-hover:translate-x-0 group-hover:opacity-100 tr[...]
+                  <div className="hidden md:flex items-center gap-4 font-condensed uppercase tracking-[0.3em] text-xs translate-x-[-20px] opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500">
                     Explore
                     <span aria-hidden className="inline-block">→</span>
                   </div>
