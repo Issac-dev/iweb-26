@@ -151,15 +151,24 @@ function Page() {
             src="/hero.mp4"
             muted
             playsInline
-            preload="metadata"
+            preload="auto"
             disableRemotePlayback
-            className="absolute inset-0 h-full w-full"
-            style={{ objectFit: "cover", objectPosition: "center", opacity: videoReady ? 1 : 0, transition: "opacity 600ms ease", WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden" }}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center",
+              opacity: videoReady ? 1 : 0,
+              transition: "opacity 600ms ease",
+            }}
           />
           {/* fallback bg while video loads */}
           <div className="absolute inset-0 -z-10" style={{ background: "radial-gradient(ellipse at 50% 60%, #1a1a1a 0%, #0a0a0a 70%)" }} />
-          {/* light overlay for text clarity */}
-          <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(10,10,10,0.25) 0%, rgba(10,10,10,0.05) 30%, rgba(10,10,10,0.1) 60%, rgba(10,10,10,0.4) 100%)" }} />
+          {/* subtle overlay for text clarity only */}
+          <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.02) 35%, rgba(10,10,10,0.08) 65%, rgba(10,10,10,0.35) 100%)" }} />
 
           {/* eyebrow */}
           <div className="absolute top-24 left-6 md:left-10 reveal in">
