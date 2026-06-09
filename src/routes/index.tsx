@@ -70,7 +70,6 @@ function Page() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
-  const [videoReady, setVideoReady] = useState(false);
   const countdown = useCountdown(new Date("2026-06-11T16:00:00Z"));
 
   // Scroll-controlled video scrubbing
@@ -82,7 +81,6 @@ function Page() {
     let duration = 0;
     const onReady = () => {
       duration = video.duration || 0;
-      if (duration > 0) setVideoReady(true);
     };
     video.addEventListener("loadedmetadata", onReady);
     video.addEventListener("loadeddata", onReady);
@@ -145,7 +143,7 @@ function Page() {
 
       {/* HERO (sticky pinned ~500vh) */}
       <section id="top" ref={sectionRef} className="relative" style={{ height: "500vh" }}>
-        <div className="sticky top-0 h-screen w-full overflow-hidden">
+        <div className="sticky top-0 h-screen w-full overflow-hidden bg-black">
           <video
             ref={videoRef}
             src="/hero.mp4"
@@ -161,14 +159,19 @@ function Page() {
               height: "100%",
               objectFit: "cover",
               objectPosition: "center",
-              opacity: videoReady ? 1 : 0,
-              transition: "opacity 600ms ease",
+              display: "block",
             }}
           />
-          {/* fallback bg while video loads */}
-          <div className="absolute inset-0 -z-10" style={{ background: "radial-gradient(ellipse at 50% 60%, #1a1a1a 0%, #0a0a0a 70%)" }} />
-          {/* subtle overlay for text clarity only */}
-          <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.02) 35%, rgba(10,10,10,0.08) 65%, rgba(10,10,10,0.35) 100%)" }} />
+          {/* light overlay for text clarity ONLY */}
+          <div style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "linear-gradient(180deg, rgba(10,10,10,0.15) 0%, transparent 40%, transparent 60%, rgba(10,10,10,0.25) 100%)",
+            pointerEvents: "none",
+          }} />
 
           {/* eyebrow */}
           <div className="absolute top-24 left-6 md:left-10 reveal in">
@@ -190,10 +193,10 @@ function Page() {
               </p>
               <div className="reveal reveal-delay-2 in flex gap-4 md:justify-end font-display text-3xl md:text-5xl" style={{ color: "#c9a84c" }}>
                 {[
-                  { v: countdown.d, l: "Days" },
-                  { v: countdown.h, l: "Hrs" },
-                  { v: countdown.m, l: "Min" },
-                  { v: countdown.s, l: "Sec" },
+                  { v: Math.floor(countdown.d), l: "Days" },
+                  { v: Math.floor(countdown.h), l: "Hrs" },
+                  { v: Math.floor(countdown.m), l: "Min" },
+                  { v: Math.floor(countdown.s), l: "Sec" },
                 ].map((c) => (
                   <div key={c.l} className="text-center">
                     <div className="tabular-nums leading-none">{String(c.v).padStart(2, "0")}</div>
