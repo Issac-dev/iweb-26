@@ -153,14 +153,11 @@ function Page() {
             playsInline
             preload="metadata"
             disableRemotePlayback
-            className="absolute inset-0 h-full w-full object-cover"
-            style={{ opacity: videoReady ? 1 : 0, transition: "opacity 600ms ease" }}
+            className="absolute inset-0 h-full w-full"
+            style={{ objectFit: "cover", objectPosition: "center", opacity: videoReady ? 1 : 0, transition: "opacity 600ms ease" }}
           />
           {/* fallback bg while video loads */}
           <div className="absolute inset-0 -z-10" style={{ background: "radial-gradient(ellipse at 50% 60%, #1a1a1a 0%, #0a0a0a 70%)" }} />
-          {/* gradient overlays */}
-          <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.15) 30%, rgba(10,10,10,0.25) 60%, rgba(10,10,10,0.85) 100%)" }} />
-          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 30% 70%, rgba(193,18,31,0.18), transparent 60%)" }} />
 
           {/* eyebrow */}
           <div className="absolute top-24 left-6 md:left-10 reveal in">
@@ -270,7 +267,7 @@ function Page() {
           {CITIES.map((p) => (
             <li key={p.n} className="group relative overflow-hidden border-b reveal" style={{ borderColor: "#ffffff14" }}>
               <a href="#tickets" className="relative flex items-center px-6 md:px-10 transition-all duration-500" style={{ height: 220 }}>
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: "linear-gradient(90deg, rgba(193,18,31,0.85) 0%, rgba(10,10,10,0.2) 100%)" }} />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: "linear-gradient(90deg, rgba(193,18,31,0.85) 0%, rgba(10,10,10,0.4) 100%)" }} />
                 <div className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 font-display select-none" style={{ fontSize: "clamp(120px, 22vw, 320px)", color: "#ffffff08", lineHeight: 1 }}>
                   {p.n}
                 </div>
