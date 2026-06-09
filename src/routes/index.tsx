@@ -143,7 +143,7 @@ function Page() {
 
       {/* HERO (sticky pinned ~500vh) */}
       <section id="top" ref={sectionRef} className="relative" style={{ height: "500vh" }}>
-        <div className="sticky top-0 h-screen w-full overflow-hidden bg-black">
+        <div className="sticky top-0 h-screen w-full overflow-hidden" style={{ background: "#d4291f" }}>
           <video
             ref={videoRef}
             src="/hero.mp4"
@@ -157,7 +157,7 @@ function Page() {
               left: 0,
               width: "100%",
               height: "100%",
-              objectFit: "cover",
+              objectFit: "contain",
               objectPosition: "center",
               display: "block",
             }}
